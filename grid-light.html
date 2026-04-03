@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Grid Game Title</title>
+	</head>
+	<body>
+		<style>
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(3, 80px);
+				gap: 30px;
+				justify-content: center;
+			}
+
+			.box {
+				width: 80px;
+				height: 80px;
+				background-color: gray;
+				cursor: pointer;
+			}
+
+			.active {
+				background-color: yellow;
+			}
+		</style>
+
+		<button onclick="startGame()">Start</button>
+
+		<div class="grid">
+			<div
+				class="box"
+				onclick="clickbox(0)"></div>
+			<div
+				class="box"
+				onclick="clickbox(1)"></div>
+			<div
+				class="box"
+				onclick="clickbox(2)"></div>
+			<div
+				class="box"
+				onclick="clickbox(3)"></div>
+			<div
+				class="box"
+				onclick="clickbox(4)"></div>
+			<div
+				class="box"
+				onclick="clickbox(5)"></div>
+			<div
+				class="box"
+				onclick="clickbox(6)"></div>
+			<div
+				class="box"
+				onclick="clickbox(7)"></div>
+			<div
+				class="box"
+				onclick="clickbox(8)"></div>
+		</div>
+
+		<script>
+			let sequence = [];
+			let user = [];
+			let playing = false;
+
+			function startGame() {
+				sequence = [];
+				user = [];
+
+				for (let i = 0; i < 3; i++) {
+					sequence.push(Math.floor(Math.random() * 9));
+				}
+				console.log(sequence);
+				showSequence();
+			}
+
+			function showSequence() {
+				playing = true;
+				
+				sequence.forEach((num, i) => {
+					setTimeout(() => {
+						const box = document.getElementsByClassName('box')[num];
+						box.classList.add('active');
+						setTimeout(() => {
+							box.classList.remove('active');
+						}, 300);
+					}, i * 500);
+				});
+
+				setTimeout(() => {
+					playing = false;
+				}, sequence.length * 500);
+			}
+
+			function clickbox(index) {
+				if (playing) return;
+
+				user.push(index);
+
+				let current = user.length - 1;
+
+				if (user[current] !== sequence[current]) {
+					alert('Wrong');
+					return;
+				}
+
+				if (user.length === sequence.length) {
+					alert('Correct ✅');
+				}
+			}
+		</script>
+	</body>
+</html>
