@@ -1,6 +1,6 @@
-function reverseRec (str) {
-     if (str === '') return ''  
-    return reverseRec(str.substr(1)) + str[0]
+function reverseRec(str) {
+  if (str === '') return ''
+  return reverseRec(str.substr(1)) + str[0]
 }
 
 console.log(reverseRec('hello'))
@@ -30,3 +30,16 @@ function reverseString(str) {
 }
 
 console.log(reverseString('world')) // "dlrow"
+
+
+function reverseNumber(num) {
+  let reversed = 0
+  while (num > 0) {
+    let digit = num % 10
+    reversed = reversed * 10 + digit
+    num = Math.floor(num / 10)
+  }
+  return reversed
+}
+
+console.log(reverseNumber(123))

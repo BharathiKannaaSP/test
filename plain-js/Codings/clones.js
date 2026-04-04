@@ -1,8 +1,8 @@
-// Shallow
+// // Shallow
 
-// const original = { name: "Bharathi", address: { city: "Erode" } };
+const original = { name: "Bharathi", address: { city: "Erode" } };
 
-// // Shallow copy using spread operator
+// // // Shallow copy using spread operator
 // const shallow = { ...original };
 
 // shallow.address.city = "Chennai";
@@ -10,8 +10,13 @@
 // console.log(original.address.city); // "Chennai" ✅ (original affected!)
 
 
+// const deepClone = structuredClone(original)
 
-//Deep
+// deepClone.address.city = 'Delhi'
+// console.log(original.address.city)
+
+
+// //Deep
 
 function deepCopy(obj) {
 
@@ -29,23 +34,27 @@ function deepCopy(obj) {
 }
 
 
+const deepClone = deepCopy(original)
 
-function shallowCopy(obj) {
-    let copy = { ...obj }
-    return copy
-}
+deepClone.address.city = 'Delhi'
+console.log(original.address.city)
 
-const original = { name: "Bharathi", address: { city: "Erode" } };
-// const clone = deepCopy(original);
-const shallowClone = shallowCopy(original)
+// function shallowCopy(obj) {
+//     let copy = { ...obj }
+//     return copy
+// }
 
-// clone.address.city = "Chennai";
-shallowClone.address.city = "US"
+// const original = { name: "Bharathi", address: { city: "Erode" } };
+// // const clone = deepCopy(original);
+// const shallowClone = shallowCopy(original)
+
+// // clone.address.city = "Chennai";
+// shallowClone.address.city = "US"
 
 
-// console.log(original.address.city); // "Erode" ✅
-// console.log(clone.address.city);  // Chennai
+// // console.log(original.address.city); // "Erode" ✅
+// // console.log(clone.address.city);  // Chennai
 
 
-console.log(original.address.city);  
-console.log(shallowClone.address.city);
+// console.log(original.address.city);
+// console.log(shallowClone.address.city);

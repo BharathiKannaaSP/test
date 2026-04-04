@@ -1,15 +1,19 @@
 // @ts-expect-error - this JS component doesn't have an associated .d.ts
 
-import { useContext } from 'react';
-import InfiniteScroll from './components/InfiniteScroll';
-import MemoAndCallback from './components/MemoAndCallBack';
+// import { useContext } from 'react';
+// import InfiniteScroll from './components/InfiniteScroll';
+// import MemoAndCallback from './components/MemoAndCallBack';
+// import Debounce from './components/Debounce.jsx';
+import Redux from './components/Redux.jsx';
 
 function App() {
 	// const { theme, toggleTheme } = useContext(ThemeContext);
 	return (
 		<>
 			{/* <InfiniteScroll /> */}
-			<MemoAndCallback />
+			{/* <MemoAndCallback /> */}
+			{/* <Debounce /> */}
+			<Redux />
 		</>
 	);
 }
